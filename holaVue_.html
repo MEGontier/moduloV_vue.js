@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluir Vue.js en nuestro archivo HTML-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>Mi primer Hola Vue</title>
+</head>
+
+<body>
+    <!-- Crear un DIV donde se montará nuestra instancia de vue -->
+    <div id="app">
+        <!-- Utilizamos la expresión {{}} para llamar el contenio de nuestros datos en la instancia de VUE -->
+        {{ message }}
+    </div>
+    <script>
+        // Creación de la instancia de vue
+        var app = new Vue({
+            // El contenido de ´el´ debe coincidir con el Id de nuestro div
+            el: '#app',
+            data: {
+                message: 'Hola Alumnos!'
+            }
+        })
+    </script>
+</body>
+
+</html>

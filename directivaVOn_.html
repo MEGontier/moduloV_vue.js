@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- incluir Vue.js  -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>directiva V-on</title>
+</head>
+
+<body>
+    <div id="example-1">
+        <h3>Ejemplo de directiva v-on </h3>
+        <!-- Directiva v-on que aumenta el valor del contador-->
+        <button v-on:click="counter += 1">Add 1</button>
+        <p>Se ha hecho clic en el botón de arriba {{ counter }} veces.</p>
+    </div>
+
+    <script>
+        var example1 = new Vue({
+            el: '#example-1',
+            data: {
+                counter: 0
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

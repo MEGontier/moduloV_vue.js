@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluir Vue.js en nuestro archivo HTML-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Renderización condicional</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Ejemplo de Renderización Condicional</h3>
+        <h2>Directiva v-if & v-else</h2>
+        <!-- Creamos un label y un input -->
+        <label for="product">Almacen: </label><br />
+        <!-- implementamos la directiva v-model asociada al numero que se evaluara en la condicion -->
+        <input type="number" v-model.number="items">
+        <br />
+        <!-- <p v-if="hasItems()">
+            Has seleccionado {{ items }} productos
+        </p> -->
+
+        <!-- Directiva v-if que evaluará la función hasItems y () moreThanFive()-->
+        <p v-if="hasItems() && !moreThanFive()">
+            You order has {{ items }} items
+        </p>
+        <!-- Directiva V-else que evalua la función moreThanFive() -->
+        <p v-else-if="moreThanFive()">
+            You order has {{ items }} items. <br />
+            You have 20% discount.
+        </p>
+        <p v-else>
+            No items
+        </p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                items: 0
+            },
+            // Aqui vemos un nuevo concepto, la definicion de métodos en nuestra 
+            // instancia de Vue
+            methods: {
+                hasItems: function () {
+                    return this.items > 0;
+                },
+                moreThanFive: function () {
+                    return this.items > 5;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

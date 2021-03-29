@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluir Vue.js en nuestro archivo HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>Compocisión con componentes</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Ejemplo de compocisión con componentes</h3>
+        <ol>
+            <!-- Implementamos nuestro componente así como la directiva v-for -->
+            <todo-item v-for="(item in itemList" v-bind:todo="item" v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
+    <script>
+        // Definimos nuestro componente todo-item
+        Vue.component('todo-item', {
+            // Agregamos las propiedades de nuestro componente
+            props: ['todo'],
+            template: '<li> {{ todo.text }} </li>'
+        })
+        // Instancia de vue
+        var app = new Vue({
+            el: '#app',
+            data: {
+                // Definimos nuestro arreglo e datos
+                itemList: [
+                    { id: 0, text: 'hola' },
+                    { id: 1, text: 'Vue' },
+                    { id: 2, text: 'js' }
+                ]
+            }
+        })
+
+    </script>
+</body>
+
+</html>

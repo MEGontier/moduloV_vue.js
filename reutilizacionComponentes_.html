@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluir vue.js en nuestro archivo HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>Manejo de eventos</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Ejemplo de reutilización de componentes</h3>
+        <!-- Llamamos a nuestro componente button-counter -->
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+
+    <script>
+        // Instancia de vue
+        var app = new Vue({
+
+        })
+        // Componente registrado de manera global 
+        Vue.component('button-counter', {
+            // Recordemos que data debe ser una función cuando reutilicemos componentes
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            // Template que define el contenido de nuestro componente
+            template: '<button v-on:click="count++"> Has pulsado {{count}} veces </button>'
+        })
+        // Instancia de vue donde se monta nuestro componente
+        new Vue({ el: '#app' })
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluir vue.js en nuestro archivo HTML-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>Ejemplo Directiva V-for</title>
+</head>
+
+<body>
+    <h3>Ejemplo de la directiva v-for</h3>
+    <div id="app">
+        <ol>
+            <!-- Utilizamos la directiva v-for para itarar en nuestro arreglo de datos -->
+            <li v-for="producto in productos">
+                {{
+                producto.product
+                }}
+            </li>
+        </ol>
+    </div>
+    <script>
+        // Creación de una instancia de vUE
+        var app = new Vue({
+            el: '#app',
+            // Arreglo de productos
+            data: {
+                productos: [
+                    { product: 'Impresora' },
+                    { product: 'Monitor' },
+                    { product: 'Mouse' }
+                ]
+
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

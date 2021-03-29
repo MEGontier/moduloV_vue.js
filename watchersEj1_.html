@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluimos vue.js en nuestro archivo HTML-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Watchers</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Ejemplo 1 de Watchers (El resultado se ve en consola)</h3>
+        <span>{{ counter }}</span>
+        <!-- Utilizamos el modo abreviado de la directiva v-on -->
+        <button @click="add()">+</button>
+        <button @click="sub()">-</button>
+    </div>
+    <script>
+        // Instancia de vue
+        new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            },
+            // Definimos los métodos
+            methods: {
+                add: function () {
+                    this.counter++;
+                },
+                sub: function () {
+                    this.counter--;
+                }
+            },
+            // Definimos nuestro watch que observará las modificaciones en el contador
+            watch: {
+                counter: function (newValue, oldValue) {
+                    console.log(oldValue, newValue);
+                    // code
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

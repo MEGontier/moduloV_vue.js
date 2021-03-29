@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluimos vue.js en nuestro archivo HTML-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>Watchers</title>
+</head>
+
+<body>
+    <h3>Ejemplo 2 de Watchers (El resultado se ve en consola)</h3>
+    <div id="app">
+        <label for="name">Escribe algo: </label>
+        <input placeholder="Escribe tu nombre" v-model="nombre" type="text" name="nombre" id="nombre">
+
+    </div>
+
+    <script>
+        // Instancia de Vue
+        const app = new Vue({
+            el: '#app',
+            data: () => ({
+                nombre: ""
+            }),
+            // Definimos nuestro watch que observará las modificaciones en el input
+            watch: {
+                nombre(nuevoValor, valoranterior) {
+                    console.log("Modificaciones: '%s'  -  '%s' ", valoranterior, nuevoValor)
+                }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
