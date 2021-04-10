@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluímos  vue.js en nuestro archivo -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- Definimos un estilo para un div -->
+    <style type="text/css">
+        .chart {
+            border: 1px solid;
+            padding: 10px;
+        }
+    </style>
+
+    <title>Slots</title>
+</head>
+
+<body>
+    <!-- Div donde se alojará nuestra instancia de Vue -->
+    <div id="app">
+        <!-- Componente que creamos en la instancia de Vue -->
+
+        <tx-chart>
+            <!-- Llamamos al slot con nombre header -->
+            <h1 slot="header">
+                Contenido del Slot
+            </h1>
+            <!-- Llamamos al slot con nombre body -->
+            <p slot="body">
+                Este es un ejemplo
+            </p>
+        </tx-chart>
+    </div>
+
+    <!-- JS -->
+    <script>
+        // Creamos un componente llamado
+        Vue.component('tx-chart', {
+            template: `
+  <div class="chart">
+    <div class="header">
+    	<slot name="header"></slot>
+    </div>
+    <div class="body">
+    	<slot name="body"></slot>
+    </div>
+	</div>`,
+        })
+
+        new Vue({
+            el: '#app',
+        })
+    </script>
+
+</body>
+
+</html>

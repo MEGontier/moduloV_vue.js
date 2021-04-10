@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <title>Notification Message</title>
+</head>
+
+<body>
+    <div id="app" class="ui container">
+        <br>
+        <br>
+        <!-- Notificacion de tipo error -->
+        <notification-message type="error" header="Este es un error!">
+            <p>Error 404</p>
+        </notification-message>
+        <!-- Notificacion de tipo info -->
+        <notification-message type="info" header="Informacion!">
+            <p>Hola usuario</p>
+        </notification-message>
+        <!-- Notificacion de tipo warning -->
+        <notification-message type="warning" header="Este es un Warning!">
+            <p>Atencion</p>
+        </notification-message>
+        <!-- Notificacion de tipo succes -->
+        <notification-message type="succes" header="Aprobado">
+            <p>Registro exitoso</p>
+        </notification-message>
+
+    </div>
+
+    <!-- Creamos nuestro template  -->
+    <script type="text/xtemplate" id="notification-message-template">
+         <!-- Notification message -->
+    <!-- Tipos: info, warning, error, succes -->
+    <div class="ui message" :class="type">
+        <i class="close icon"></i>
+        <div class="header">
+            {{header}}
+        </div>
+        <slot></slot>
+    </div>
+
+    </script>
+
+    <!-- Código de JAVASCRIPT -->
+    <script>
+        Vue.component('notification-message', {
+            template: '#notification-message-template',
+            props: {
+                type: {
+                    type: String
+                },
+                header: {
+                    type: String
+                }
+            }
+
+        })
+        new Vue({
+            el: '#app'
+        })
+
+    </script>
+
+</body>
+
+</html>

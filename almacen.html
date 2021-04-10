@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue"></script>
+    <style type="text/css">
+        .stock {
+            text-decoration: line-through;
+            color: grey;
+        }
+
+        .priority {
+            text-decoration: solid;
+            color: red;
+
+        }
+    </style>
+    <title>Ejemplo 1 Almacen</title>
+</head>
+
+<body>
+    <div id="product-list">
+        <h1>{{ header.toLocaleUpperCase() }}</h1>
+        <!-- <input type="text" v-model="header"> -->
+        <div v-if="status === 'edit'" id="form">
+            <input type="text" v-model="newItem" placeholder="Agrega un producto" @keyup.enter="saveItem">
+            <p>{{characterCount}}/200</p>
+            <button @click="saveItem" v-bind:disabled="newItem.length === 0 "> Add product</button>
+        </div>
+        </br>
+        </br>
+        <div>
+            <button v-if="status === 'default'" @click="changeStatus('edit')">Add</button>
+            <button v-else @click="changeStatus('default')">Cancel</button>
+        </div>
+        <ul>
+            <li v-for="product in updateProducts" :class="{stock: product.inStock === false}"
+                @click="changeStock(product)">
+                {{ product.label }}
+            </li>
+        </ul>
+        <p v-if="products.length === 0 ">Lista de productos vacia</p>
+
+    </div>
+</body>
+<script>
+    var productList = new Vue({
+        el: "#product-list",
+        data: {
+            status: 'default',
+            header: 'Lista de productos: ',
+            newItem: '',
+            products: [
+                {
+                    label: "Laptop Lenovo",
+                    inStock: true,
+                    priority: true
+                },
+                {
+                    label: "Teclado",
+                    inStock: true,
+                    priority: false
+                },
+                {
+                    label: "Monitor",
+                    inStock: false,
+                    priority: true
+                }
+            ]
+        },
+        computed: {
+            characterCount() {
+                return this.newItem.length;
+            },
+            updateProducts() {
+                return this.products.slice(0).reverse();
+            }
+        },
+        methods: {
+            saveItem: function () {
+                this.products.push(
+                    {
+                        label: this.newItem,
+                        inStock: true
+                    }
+                );
+                this.newItem = '';
+            },
+            changeStatus: function (newStatus) {
+                this.status = newStatus;
+                this.newItem = '';
+            },
+            changeStock: function (product) {
+                product.inStock = !product.inStock
+            }
+        }
+    });
+</script>
+
+</html>
